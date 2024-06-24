@@ -28,13 +28,18 @@ jobs:
       - uses: terraform-linters/setup-tflint@v4
         name: Setup TFLint
         with:
-          tflint_version: 0.51.1
+          tflint_version: v0.50.3
 
-      - uses: actions/cache@v4
-        name: Cache plugin dir
-        with:
-          path: ~/.tflint.d/plugins
-          key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+      # - uses: terraform-linters/setup-tflint@v4
+      #   name: Setup TFLint
+      #   with:
+      #     tflint_version: 0.51.1
+
+      # - uses: actions/cache@v4
+      #   name: Cache plugin dir
+      #   with:
+      #     path: ~/.tflint.d/plugins
+      #     key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
 
       - name: Show TFLint version
         run: tflint --version
