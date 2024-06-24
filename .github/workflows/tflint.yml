@@ -29,6 +29,7 @@ jobs:
         name: Setup TFLint
         with:
           tflint_version: v0.51.1
+          tflint_wrapper: true
 
       - uses: actions/cache@v4
         name: Cache plugin dir
@@ -40,12 +41,17 @@ jobs:
         run: tflint --version
 
       - name: Init TFLint
+        id: tflint
         run: tflint --init
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Run TFLint
-        run: tflint -f compact
+        run: |
+          tflint -f json
+          echo ${{ steps.tflint.outputs.stdout }}  
+          echo ${{ steps.tflint.outputs.stderr }}
+          echo ${{ steps.tflint.outputs.exitcode }}
 
       # Runs a single command using the runners shell
       # - name: Run a one-line script
