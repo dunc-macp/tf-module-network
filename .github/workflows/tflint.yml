@@ -47,7 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Run TFLint
-        run: tflint -f compact --min-error-severity warning
+        run: tflint -f compact --min-failure-severity warning
       # echo ${{ steps.tflint.outputs.stdout }}
       # echo ${{ steps.tflint.outputs.stderr }}
       # echo ${{ steps.tflint.outputs.exitcode }}
