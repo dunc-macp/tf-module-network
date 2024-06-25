@@ -48,10 +48,10 @@ jobs:
 
       - name: Run TFLint
         run: |
-          tflint -f json
-          echo ${{ steps.tflint.outputs.stdout }} | jq .
-          echo ${{ steps.tflint.outputs.stderr }} | jq .
-          echo ${{ steps.tflint.outputs.exitcode }} | jq .
+          tflint -f compact
+      # echo ${{ steps.tflint.outputs.stdout }}
+      # echo ${{ steps.tflint.outputs.stderr }}
+      # echo ${{ steps.tflint.outputs.exitcode }}
 
       # Runs a single command using the runners shell
       # - name: Run a one-line script
