@@ -14,7 +14,7 @@ config {
   }
 
   varfile = []
-  variables = ["foo=bar", "bar=[\"baz\"]"]
+  variables = []
 }
 
 rule "aws_instance_invalid_type" {
