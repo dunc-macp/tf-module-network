@@ -40,12 +40,9 @@ jobs:
       - name: Show TFLint version
         run: | 
           tflint --version
-          which tflint
-          echo $GITHUB_PATH
-          ls -al ~/.tflint.d/
-
-      - name: Where are we
-        run: pwd
+          # which tflint
+          # echo $GITHUB_PATH
+          # ls -al ~/.tflint.d/
 
       - name: Init TFLint
         id: tflint
