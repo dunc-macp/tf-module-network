@@ -25,22 +25,23 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - uses: terraform-linters/setup-tflint@v4
-        name: Setup TFLint
-        with:
-          tflint_version: v0.51.1
-          tflint_wrapper: true
-
       - uses: actions/cache@v4
         name: Cache plugin dir
         with:
           path: ~/.tflint.d/
           key: tflint-${{ hashFiles('.tflint.hcl') }}
 
+      - uses: terraform-linters/setup-tflint@v4
+        name: Setup TFLint
+        with:
+          tflint_version: v0.51.1
+          tflint_wrapper: true
+
       - name: Show TFLint version
         run: | 
           tflint --version
           which tflint
+          echo $GITHUB_PATH
 
       - name: Where are we
         run: pwd
