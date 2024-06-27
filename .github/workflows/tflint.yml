@@ -35,10 +35,13 @@ jobs:
         name: Cache plugin dir
         with:
           path: ~/.tflint.d/plugins
-          key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+          key: tflint-${{ hashFiles('.tflint.hcl') }}
 
       - name: Show TFLint version
         run: tflint --version
+
+      - name: Where are we
+        run: pwd
 
       - name: Init TFLint
         id: tflint
@@ -47,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Run TFLint
-        run: tflint -f compact --minimum-failure-severity warning
+        run: tflint -f compact --minimum-failure-severity 
       # echo ${{ steps.tflint.outputs.stdout }}
       # echo ${{ steps.tflint.outputs.stderr }}
       # echo ${{ steps.tflint.outputs.exitcode }}
