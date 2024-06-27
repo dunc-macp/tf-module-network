@@ -16,7 +16,3 @@ config {
   varfile = []
   variables = []
 }
-
-rule "aws_instance_invalid_type" {
-  enabled = true
-}
