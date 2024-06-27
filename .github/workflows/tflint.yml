@@ -42,6 +42,7 @@ jobs:
           tflint --version
           which tflint
           echo $GITHUB_PATH
+          ls -al ~/.tflint.d/
 
       - name: Where are we
         run: pwd
