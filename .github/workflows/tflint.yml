@@ -34,11 +34,13 @@ jobs:
       - uses: actions/cache@v4
         name: Cache plugin dir
         with:
-          path: ~/.tflint.d/plugins
+          path: ~/.tflint.d/
           key: tflint-${{ hashFiles('.tflint.hcl') }}
 
       - name: Show TFLint version
-        run: tflint --version
+        run: | 
+          tflint --version
+          which tflint
 
       - name: Where are we
         run: pwd
