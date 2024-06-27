@@ -13,7 +13,7 @@ config {
   ignore_module = {
   }
 
-  varfile = ["example1.tfvars", "example2.tfvars"]
+  varfile = []
   variables = ["foo=bar", "bar=[\"baz\"]"]
 }
 
