@@ -32,7 +32,7 @@ jobs:
           key: tflint-${{ hashFiles('.tflint.hcl') }}
 
       - name: Call composite
-        uses: "github.com/dunc-macp/github-action-tf-linting/action.yaml@main"
+        uses: "dunc-macp/github-action-tf-linting/action.yaml@main"
         
         
 
