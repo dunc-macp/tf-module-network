@@ -31,27 +31,32 @@ jobs:
           path: ~/.tflint.d/
           key: tflint-${{ hashFiles('.tflint.hcl') }}
 
-      - uses: terraform-linters/setup-tflint@v4
-        name: Setup TFLint
-        with:
-          tflint_version: v0.51.1
-          tflint_wrapper: true
+      - name: Call composite
+        uses: "github.com/dunc-macp/github-action-tf-linting/action.yaml@main"
+        
+        
 
-      - name: Show TFLint version
-        run: | 
-          tflint --version
-          which tflint
-          echo $GITHUB_PATH
-          ls -al ~/.tflint.d/
+      # - uses: terraform-linters/setup-tflint@v4
+      #   name: Setup TFLint
+      #   with:
+      #     tflint_version: v0.51.1
+      #     tflint_wrapper: false
 
-      - name: Init TFLint
-        id: tflint
-        run: tflint --init
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      # - name: Show TFLint version
+      #   run: | 
+      #     tflint --version
+      #     which tflint
+      #     echo $GITHUB_PATH
+      #     ls -al ~/.tflint.d/
 
-      - name: Run TFLint
-        run: tflint -f compact --minimum-failure-severity=warning
+      # - name: Init TFLint
+      #   id: tflint
+      #   run: tflint --init
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+
+      # - name: Run TFLint
+      #   run: tflint -f compact --minimum-failure-severity=warning
       # echo ${{ steps.tflint.outputs.stdout }}
       # echo ${{ steps.tflint.outputs.stderr }}
       # echo ${{ steps.tflint.outputs.exitcode }}
